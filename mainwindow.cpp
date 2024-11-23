@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    gameTimer = new GameTimer(this, (int)(60*3*1000));
-    gameSecondTimer = new GameTimer(this, (int)(60*2*1000));
+    gameTimer = new GameTimer(this, (int)((60*3+0.5)*1000));
+    gameSecondTimer = new GameTimer(this, (int)((60*2+0.5)*1000));
 
     connect(this->gameTimer, &GameTimer::update2, this, &MainWindow::setTimerText);
     connect(this->gameSecondTimer, &GameTimer::update2, this, &MainWindow::setTimerTextSecond);
