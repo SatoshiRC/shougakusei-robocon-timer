@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->label->setText("start");
 
+
     // soundEffect = new QSoundEffect(this);
     // soundEffect->setSource(QUrl("/home/ohya/ProjectQt/syougakusei_robo/tone_880hz_1000ms.mp3"));
 }
@@ -25,6 +26,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startButton_released()
 {
+    gameSecondTimer->stop();
     gameTimer->start();
     // soundEffect->play();
 }
@@ -32,7 +34,7 @@ void MainWindow::on_startButton_released()
 
 void MainWindow::on_continueButton_released()
 {
-    gameTimer->reset();
+    gameTimer->stop();
     gameSecondTimer->start();
 }
 
@@ -41,6 +43,8 @@ void MainWindow::on_stopButton_released()
 {
     gameTimer->stop();
     gameSecondTimer->stop();
+    ui->label->setText("Timer Stoped");
+    ui->timer->setText("00:00");
 }
 
 void MainWindow::setTimerText(QString str){
